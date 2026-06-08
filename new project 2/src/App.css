@@ -628,3 +628,774 @@ body {
     text-align: center;
   }
 }
+
+/* ================================================================
+   PASTE EVERYTHING BELOW THIS LINE INTO YOUR EXISTING App.css
+   (add at the very bottom of the file)
+   ================================================================ */
+
+
+/* ── SHARED PAGE LAYOUT ──────────────────────────────────────── */
+
+.page-wrapper {
+  min-height: 100vh;
+}
+
+/* Dark hero banner used on every inner page */
+.page-hero {
+  background: linear-gradient(150deg, var(--navy) 0%, #112045 100%);
+  padding: 64px 48px 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 55% 70% at 80% 50%, rgba(79,142,247,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero-text {
+  max-width: 680px;
+  z-index: 1;
+  position: relative;
+}
+
+.page-hero-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1.2px;
+  line-height: 1.2;
+  margin: 16px 0 14px;
+}
+
+.page-hero-desc {
+  color: rgba(255,255,255,0.55);
+  font-size: 1rem;
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 540px;
+}
+
+
+/* ── NOTES PAGE ──────────────────────────────────────────────── */
+
+.notes-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  padding: 12px 18px;
+  max-width: 540px;
+}
+
+.notes-search-bar input {
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+}
+
+.notes-search-bar input::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.search-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.notes-body {
+  padding: 40px 48px 64px;
+}
+
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.tab {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.tab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Notes grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.note-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.note-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+  border-color: #c8d5f0;
+}
+
+.note-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.note-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.note-subject {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.note-preview {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.note-date {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.note-read {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.note-read:hover {
+  color: #2B5CE6;
+}
+
+
+/* ── DEPARTMENTS PAGE ────────────────────────────────────────── */
+
+.dept-body {
+  padding: 48px 48px 64px;
+}
+
+.dept-cards-large {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dept-card-large {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.dept-card-large:hover {
+  box-shadow: 0 10px 36px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+  border-color: #c8d5f0;
+}
+
+.dcl-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 1;
+}
+
+.dept-icon-lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.dcl-info {
+  flex: 1;
+}
+
+.dcl-short {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.dcl-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.dcl-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 14px;
+  max-width: 560px;
+}
+
+.dcl-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-pill {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+}
+
+.dcl-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 80px;
+}
+
+.dcl-count {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.dcl-count-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.dcl-arrow {
+  color: var(--muted);
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+
+/* ── ABOUT PAGE ──────────────────────────────────────────────── */
+
+.about-mv-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.mv-large-card {
+  padding: 52px 48px;
+  background: var(--surface);
+}
+
+.mv-large-card.accent-card {
+  background: var(--navy);
+}
+
+.mvl-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tag-fg);
+  margin-bottom: 16px;
+}
+
+.mvl-label.light {
+  color: var(--accent2);
+}
+
+.mv-large-card h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.mv-large-card.accent-card h2 {
+  color: #fff;
+}
+
+.mv-large-card p {
+  font-size: 0.93rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.mv-large-card.accent-card p {
+  color: rgba(255,255,255,0.5);
+}
+
+.values-section {
+  padding: 64px 48px;
+}
+
+/* Team section */
+.team-section {
+  background: var(--navy);
+  padding: 64px 48px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.team-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.team-card:hover {
+  background: rgba(79,142,247,0.1);
+  border-color: rgba(79,142,247,0.3);
+  transform: translateY(-3px);
+}
+
+.team-avatar {
+  margin-bottom: 4px;
+}
+
+.team-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.team-role {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 400;
+}
+
+/* Stats strip */
+.stats-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 48px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 48px;
+}
+
+.stat-big {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--border);
+}
+
+
+/* ── CONTACT PAGE ────────────────────────────────────────────── */
+
+.contact-body {
+  display: flex;
+  gap: 0;
+  min-height: 600px;
+}
+
+.contact-form-wrap {
+  flex: 1;
+  padding: 52px 48px;
+  background: var(--surface);
+}
+
+.contact-info-wrap {
+  width: 380px;
+  flex-shrink: 0;
+  background: var(--navy);
+  padding: 52px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-heading {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  margin-bottom: 28px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 560px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79,142,247,0.12);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #b0b8cc;
+}
+
+.submit-btn {
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  align-self: flex-start;
+  font-size: 0.95rem;
+}
+
+/* Success state */
+.success-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 440px;
+  margin-top: 12px;
+}
+
+.success-icon {
+  font-size: 36px;
+}
+
+.success-msg h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.success-msg p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* Info cards on right */
+.contact-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.info-icon {
+  font-size: 20px;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.info-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* FAQ accordion */
+.faq-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq-heading {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 14px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.4;
+}
+
+.faq-caret {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.faq-item.open .faq-q {
+  color: #fff;
+}
+
+.faq-item.open .faq-caret {
+  color: var(--accent2);
+}
+
+.faq-a {
+  margin-top: 10px;
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+}
+
+
+/* ── RESPONSIVE (pages) ──────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .page-hero {
+    padding: 48px 24px 40px;
+  }
+
+  .page-hero-title {
+    font-size: 2rem;
+  }
+
+  .notes-body,
+  .dept-body,
+  .values-section {
+    padding: 36px 24px 48px;
+  }
+
+  .about-mv-section {
+    grid-template-columns: 1fr;
+  }
+
+  .mv-large-card {
+    padding: 40px 24px;
+  }
+
+  .team-section {
+    padding: 48px 24px;
+  }
+
+  .stats-strip {
+    padding: 36px 24px;
+    gap: 24px;
+  }
+
+  .stat-block {
+    padding: 0 24px;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .contact-body {
+    flex-direction: column;
+  }
+
+  .contact-form-wrap {
+    padding: 36px 24px;
+  }
+
+  .contact-info-wrap {
+    width: 100%;
+    padding: 36px 24px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dept-card-large {
+    flex-direction: column;
+    padding: 22px 20px;
+  }
+
+  .dcl-left {
+    flex-direction: column;
+  }
+
+  .dcl-right {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+}
