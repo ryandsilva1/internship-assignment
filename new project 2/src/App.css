@@ -1399,3 +1399,626 @@ body {
     gap: 10px;
   }
 }
+/* ================================================================
+   PASTE EVERYTHING BELOW AT THE BOTTOM OF YOUR App.css
+   ================================================================ */
+
+
+/* ── MODAL BACKDROP ─────────────────────────────────────────── */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 900;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── MODAL BOX ──────────────────────────────────────────────── */
+
+.modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 910;
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 440px;
+  padding: 36px 36px 28px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translate(-50%, -46%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ── MODAL HEADER ───────────────────────────────────────────── */
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.modal-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.modal-header p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* ── MODAL FORM ─────────────────────────────────────────────── */
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Reuse .form-group, input, select from contact page styles */
+/* These are additions / overrides for the modal context */
+
+.modal-form .form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.modal-form select {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7A99' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.modal-form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.12);
+}
+
+.modal-error {
+  font-size: 0.82rem;
+  color: #ef4444;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.modal-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.97rem;
+  padding: 13px;
+  margin-top: 4px;
+}
+
+.modal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #b0b8cc;
+  margin: 0;
+}
+
+
+/* ── NAV RIGHT (user pill area) ─────────────────────────────── */
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ── USER PILL ──────────────────────────────────────────────── */
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  padding: 6px 14px 6px 6px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+  user-select: none;
+}
+
+.user-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #19C9A3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.user-name {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.pill-caret {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+}
+
+/* ── ROLE BADGE ─────────────────────────────────────────────── */
+
+.role-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.badge-student   { background: rgba(79,142,247,0.2);  color: #7CAAFF; }
+.badge-teacher   { background: rgba(25,201,163,0.2);  color: #19C9A3; }
+.badge-researcher{ background: rgba(251,179,64,0.2);  color: #FBB340; }
+.badge-learner   { background: rgba(167,139,250,0.2); color: #A78BFA; }
+.badge-other     { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+
+/* ── USER DROPDOWN ──────────────────────────────────────────── */
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--navy2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 180px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.15s ease;
+}
+
+.dropdown-email {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 4px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  word-break: break-all;
+}
+
+.dropdown-logout {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.dropdown-logout:hover {
+  background: rgba(239, 68, 68, 0.22);
+}
+/* ================================================================
+   PASTE EVERYTHING BELOW AT THE BOTTOM OF YOUR App.css
+   ================================================================ */
+
+
+/* ── MODAL BACKDROP ─────────────────────────────────────────── */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 900;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── MODAL BOX ──────────────────────────────────────────────── */
+
+.modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 910;
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 440px;
+  padding: 36px 36px 28px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translate(-50%, -46%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ── MODAL HEADER ───────────────────────────────────────────── */
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.modal-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.modal-header p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* ── MODAL FORM ─────────────────────────────────────────────── */
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-form .form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.modal-form select {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7A99' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.modal-form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.12);
+}
+
+.modal-error {
+  font-size: 0.82rem;
+  color: #ef4444;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.modal-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.97rem;
+  padding: 13px;
+  margin-top: 4px;
+}
+
+.modal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #b0b8cc;
+  margin: 0;
+}
+
+
+/* ── NAV RIGHT (user pill area) ─────────────────────────────── */
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ── USER PILL ──────────────────────────────────────────────── */
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  padding: 6px 14px 6px 6px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+  user-select: none;
+}
+
+.user-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #19C9A3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.user-name {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.pill-caret {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+}
+
+/* ── ROLE BADGE ─────────────────────────────────────────────── */
+
+.role-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.badge-student    { background: rgba(79,142,247,0.2);  color: #7CAAFF; }
+.badge-teacher    { background: rgba(25,201,163,0.2);  color: #19C9A3; }
+.badge-researcher { background: rgba(251,179,64,0.2);  color: #FBB340; }
+.badge-learner    { background: rgba(167,139,250,0.2); color: #A78BFA; }
+.badge-other      { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+
+/* ── USER DROPDOWN ──────────────────────────────────────────── */
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--navy2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 180px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.15s ease;
+}
+
+.dropdown-email {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 4px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  word-break: break-all;
+}
+
+.dropdown-logout {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.dropdown-logout:hover {
+  background: rgba(239, 68, 68, 0.22);
+}
+
+
+/* ── SIGN IN HINT ARROW ─────────────────────────────────────── */
+
+/* Wrap sits inline — hint label to the LEFT, button to the RIGHT */
+.signin-hint-wrap {
+  display: flex;
+  flex-direction: row;       /* side by side */
+  align-items: center;
+  gap: 10px;
+}
+
+.signin-hint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(251, 179, 64, 0.15);
+  border: 1px solid rgba(251, 179, 64, 0.35);
+  border-radius: 100px;
+  padding: 5px 12px 5px 8px;
+  white-space: nowrap;
+  animation: hintPulse 1.4s ease-in-out infinite;
+}
+
+.hint-arrow {
+  font-size: 14px;
+  display: inline-block;
+  animation: pointRight 1.4s ease-in-out infinite;
+}
+
+.hint-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #FBB340;
+  letter-spacing: 0.02em;
+}
+
+/* Pill bounces left-right to point toward the button */
+@keyframes hintPulse {
+  0%, 100% { transform: translateX(0);   opacity: 1;    }
+  50%       { transform: translateX(4px); opacity: 0.8;  }
+}
+
+/* Arrow nudges right */
+@keyframes pointRight {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(3px); }
+}
