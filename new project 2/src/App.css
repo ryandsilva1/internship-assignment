@@ -2022,3 +2022,29 @@ body {
   0%, 100% { transform: translateX(0); }
   50%       { transform: translateX(3px); }
 }
+/* ================================================================
+   ADD THESE LINES AT THE BOTTOM OF YOUR EXISTING App.css
+   (these are only the new additions for the auth modal)
+   ================================================================ */
+
+/* ── MODAL SWITCH LINK (Log In ↔ Sign Up toggle) ─────────────── */
+
+.modal-switch {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.modal-switch span {
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.modal-switch span:hover {
+  color: #2B5CE6;
+}
