@@ -1,6 +1,4 @@
-// src/components/AuthModal.jsx
-// forced={true}  → no close button, user MUST sign in (auto-popup)
-// forced={false} → normal modal with X button
+
 
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
