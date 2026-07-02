@@ -9,6 +9,8 @@ import About from "./components/About"
 import Notes from "./components/Notes"
 import Department from "./components/Department"
 import Contact from "./components/Contact"
+import Shop from "./components/Shop"
+import Cart from "./components/Cart"
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/Notes"      element={<Notes />} />
         <Route path="/Department" element={<Department />} />
         <Route path="/Contact"    element={<Contact />} />
+        <Route path="/Shop"       element={<Shop />} />
+        <Route path="/Cart"       element={<Cart />} />
       </Routes>
 
       <Footer />

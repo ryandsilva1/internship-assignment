@@ -1,16 +1,16 @@
 // src/components/AuthModal.jsx
-// Replaces the old UserModal.
-// Toggling between Sign Up and Log In in one clean modal.
+// forced={true}  → no close button, user MUST sign in (auto-popup)
+// forced={false} → normal modal with X button
 
 import { useState } from "react";
-import { useAuth } from "../Context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-function AuthModal({ onClose }) {
+function AuthModal({ onClose, forced = false }) {
   const { signUp, logIn } = useAuth();
   const navigate = useNavigate();
 
-  const [mode, setMode]       = useState("login");   // "login" | "signup"
+  const [mode, setMode]       = useState("login");
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState("");
   const [form, setForm]       = useState({
@@ -28,8 +28,12 @@ function AuthModal({ onClose }) {
     setForm({ name: "", email: "", password: "", role: "" });
   };
 
+  // Clicking backdrop only closes if NOT forced
+  const handleBackdropClick = () => {
+    if (!forced) onClose();
+  };
+
   const handleSubmit = async () => {
-    // ── Validation ──
     if (!form.email || !form.password) {
       setError("Email and password are required.");
       return;
@@ -60,7 +64,7 @@ function AuthModal({ onClose }) {
         await logIn({ email: form.email.trim(), password: form.password });
       }
       onClose();
-      navigate("/");           // redirect to home after auth
+      navigate("/");
     } catch (err) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
@@ -70,12 +74,24 @@ function AuthModal({ onClose }) {
 
   return (
     <>
-      {/* Backdrop */}
-      <div className="modal-backdrop" onClick={onClose} />
+      {/* Backdrop — darkened and blurred; not clickable when forced */}
+      <div
+        className={`modal-backdrop ${forced ? "modal-backdrop-forced" : ""}`}
+        onClick={handleBackdropClick}
+      />
 
-      {/* Modal */}
       <div className="modal-box">
-        <button className="modal-close" onClick={onClose}>✕</button>
+        {/* Only show close button when NOT forced */}
+        {!forced && (
+          <button className="modal-close" onClick={onClose}>✕</button>
+        )}
+
+        {/* Forced banner */}
+        {forced && (
+          <div className="forced-banner">
+            🔒 Please sign in to continue using EasyNotes
+          </div>
+        )}
 
         {/* Header */}
         <div className="modal-header">
@@ -84,14 +100,13 @@ function AuthModal({ onClose }) {
           <p>
             {mode === "login"
               ? "Log in to access your notes and departments."
-              : "Create an account to start organizing your notes."}
+              : "Create a free account to start organizing your notes."}
           </p>
         </div>
 
         {/* Form */}
         <div className="modal-form">
 
-          {/* Sign Up only fields */}
           {mode === "signup" && (
             <div className="form-group">
               <label>Your Name</label>
@@ -127,7 +142,6 @@ function AuthModal({ onClose }) {
             />
           </div>
 
-          {/* Sign Up only fields */}
           {mode === "signup" && (
             <div className="form-group">
               <label>I am a...</label>
@@ -142,10 +156,8 @@ function AuthModal({ onClose }) {
             </div>
           )}
 
-          {/* Error */}
           {error && <p className="modal-error">{error}</p>}
 
-          {/* Submit */}
           <button
             className="btn-primary modal-submit"
             onClick={handleSubmit}
@@ -156,7 +168,6 @@ function AuthModal({ onClose }) {
               : mode === "login" ? "Log In →" : "Create Account →"}
           </button>
 
-          {/* Toggle mode */}
           <p className="modal-switch">
             {mode === "login" ? "Don't have an account? " : "Already have an account? "}
             <span onClick={switchMode}>
